@@ -1,10 +1,10 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
-const { imageShortcode } = require('./build/image-shortcode')
-const collections = require('./build/collections')
-const filters = require('./build/filters')
-const customFormatScss = require('./build/scss-format')
-const { watchTargets, passthroughCopy } = require('./build/watch-passthrough-info')
-const markdownSetup = require('./build/markdown')
+const { imageShortcode } = require('./eleventy-configs/image-shortcode')
+const collections = require('./eleventy-configs/collections')
+const filters = require('./eleventy-configs/filters')
+const customFormatScss = require('./eleventy-configs/scss-format')
+const { watchTargets, passthroughCopy } = require('./eleventy-configs/watch-passthrough-info')
+const markdownSetup = require('./eleventy-configs/markdown')
 
 module.exports = function (eleventyConfig) {
 	customFormatScss(eleventyConfig)
@@ -32,7 +32,6 @@ module.exports = function (eleventyConfig) {
 	)
 
 	eleventyConfig.addPlugin(syntaxHighlight)
-
 	eleventyConfig.setServerPassthroughCopyBehavior('passthrough')
 
 	return {
