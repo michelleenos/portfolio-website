@@ -6,7 +6,7 @@ tags: ['home assistant', 'lineageos']
 excerpt: ''
 img: '/images/ha-tablet-dashboard.jpeg'
 imgAlt: 'home assistant dashboard showing controls for 3-4 lights, temperature guages, and buttons'
-order: 300
+order: 200
 ---
 
 My house is set up with [Home Assistant](https://www.home-assistant.io/), an open-source smart home/home automation software. For a year or so I've been switching out light switches, plugs, and other items around the house to expand what I can do with it.

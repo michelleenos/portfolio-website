@@ -4,10 +4,10 @@ date: 2024-10-23
 dateUpdated: 2024-10-23
 layout: post.njk
 tags: ['promises', 'error handling', 'express', 'nodejs']
-excerpt: 'how to handle async errors in express (without crashing your server)'
+excerpt: 'handling async errors in express without crashing your server'
 img: ''
 imgAlt: ''
-order: 400
+order: 250
 ---
 
 It seems like support for async/await in ExpressJS has been a long time in the works - see [this github thread which has been going since 2014](https://github.com/expressjs/express/issues/2259)! Express 5.0 apparently does include this support, but the stable/default version (something like 4.2.x) still does not.
@@ -114,7 +114,7 @@ app.get(
 	asyncWrapper(async (req, res) => {
 		const content = await fs.readFile('non-existing-file.txt', 'utf-8')
 		res.json({ success: true, message: content })
-	})
+	}),
 )
 ```
 
