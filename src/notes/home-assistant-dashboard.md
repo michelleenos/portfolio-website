@@ -1,6 +1,7 @@
 ---
 title: Repurposing an old tablet with LineageOS and Home Assistant
 date: 2026-04-01
+dateUpdated: 2026-04-01
 layout: post.njk
 tags: ['home assistant', 'lineageos']
 excerpt: ''

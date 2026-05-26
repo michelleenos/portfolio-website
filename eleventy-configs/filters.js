@@ -35,6 +35,14 @@ let filters = [
 		},
 	},
 	{
+		name: 'dateIso',
+		fn: function (d) {
+			if (d) {
+				return d.toISOString()
+			}
+		},
+	},
+	{
 		name: 'head',
 		fn: function (array, n) {
 			if (!Array.isArray(array) || array.length === 0) {
