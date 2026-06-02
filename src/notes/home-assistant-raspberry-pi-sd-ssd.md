@@ -94,21 +94,21 @@ This is because the Pi now had a new OS, and therefore generated a new host key,
 
 ### Step 4: Update Pi firmware and set up NVMe boot
 
-You can do a quick check to see that your NVMe SSD is detected by running `lsblk`. The returned items should include something like `nvme0n1`.
+Once you're ssh'd into your pi successfully, do a quick check to make sure that your NVMe SSD is detected by running `lsblk`. The returned items should include something like `nvme0n1`.
 
-The tutorials I looked at also recommended upgrading the Raspberry Pi 5 firmware. This checks whether it is up to date:
+Most tutorials I looked at also recommended upgrading the Raspberry Pi 5 firmware at this point. This command checks whether it is up to date:
 
 ```bash
 sudo rpi-eeprom-update
 ```
 
-Mine returned a message that it was up to date already. If you don't get that message, you can update with this command:
+Mine returned a message that it was up to date already. If you don't get that message, you can update with this command, after which you will likely need to reboot and ssh back in:
 
 ```bash
 sudo rpi-eeprom-update -a
 ```
 
-Next use the `raspi-config` CLI to tell your Raspberry Pi to boot from NVMe. First run:
+Once you're up to date, use the `raspi-config` CLI to tell your Raspberry Pi to boot from NVMe. First run:
 
 ```bash
 sudo raspi-config
@@ -122,7 +122,7 @@ Select "Advanced Options," then "Boot Order" and enable "NVMe/USB Boot" and foll
 
 ### Step 5: Write Home Assistant OS to the NVMe SSD
 
-[Find the URL of the latest HAOS image for Raspberry Pi from this page](https://www.home-assistant.io/installation/raspberrypi#downloading-the-home-assistant-image). Then in your ssh session, download it onto the Pi with `wget`. It will look something like this:
+First, [find the URL of the latest HAOS image for Raspberry Pi from this page](https://www.home-assistant.io/installation/raspberrypi#downloading-the-home-assistant-image). Then in your ssh session, download it onto the Pi with `wget`. It will look something like this:
 
 ```bash
 wget https://github.com/home-assistant/operating-system/releases/download/17.3/haos_rp15-64-17.3.img.xz

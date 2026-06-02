@@ -7,7 +7,7 @@ tags: ['promises', 'error handling', 'express', 'nodejs']
 excerpt: 'handling async errors in express without crashing your server'
 img: ''
 imgAlt: ''
-order: 250
+order: 50
 ---
 
 It seems like support for async/await in ExpressJS has been a long time in the works - see [this github thread which has been going since 2014](https://github.com/expressjs/express/issues/2259)! Express 5.0 apparently does include this support, but the stable/default version (something like 4.2.x at the time I created this post) still does not.
