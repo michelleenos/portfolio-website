@@ -10,6 +10,10 @@ imgAlt: ''
 order: 50
 ---
 
+**NOTE FROM THE FUTURE**: It is now 2026, Express 5 is released & stable and handles async/await beautifully without any additional configuration needed. That makes this guide largely irrelevant unless you are still using express@4.
+
+---
+
 It seems like support for async/await in ExpressJS has been a long time in the works - see [this github thread which has been going since 2014](https://github.com/expressjs/express/issues/2259)! Express 5.0 apparently does include this support, but the stable/default version (something like 4.2.x at the time I created this post) still does not.
 
 ## setup

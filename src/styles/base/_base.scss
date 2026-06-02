@@ -49,3 +49,9 @@ body {
 	height: 100%;
 	z-index: -1;
 }
+
+hr {
+	border-top: 1px solid var(--turquoise-dark-2);
+	border-bottom: none;
+	margin-block: 2rem;
+}
