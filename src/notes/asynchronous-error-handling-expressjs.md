@@ -10,7 +10,7 @@ imgAlt: ''
 order: 250
 ---
 
-It seems like support for async/await in ExpressJS has been a long time in the works - see [this github thread which has been going since 2014](https://github.com/expressjs/express/issues/2259)! Express 5.0 apparently does include this support, but the stable/default version (something like 4.2.x) still does not.
+It seems like support for async/await in ExpressJS has been a long time in the works - see [this github thread which has been going since 2014](https://github.com/expressjs/express/issues/2259)! Express 5.0 apparently does include this support, but the stable/default version (something like 4.2.x at the time I created this post) still does not.
 
 ## setup
 
@@ -44,7 +44,7 @@ app.get('/oops', async (req, res) => {
 })
 ```
 
-When I visit localhost:3000/hello, I see the file contents in the response and everything works great. BUT if an error occurs somewhere (like if the file doesn't exist), the server just crashes. My error handler never even shows up! If I'd written this _synchronously_, I would've gotten an error in response. We haven't defined any error handline, so it'd be kind of ugly, but the server would continue running and it wouldn't just blow up everything. Unfortunately, express doesn't know how to handle errors in asynchronous functions, so we have to figure out some ways around that.
+When I visit localhost:3000/hello, I see the file contents in the response and everything works great. BUT when I hit the `/oops` endpoint...literally no response (Postman shows 'error: socket hang up'). And most critically, _the server crashes entirely_. I can't hit the good endpoint anymore, no one can, everything's down. If I'd written this _synchronously_, I would've gotten an error in response. We haven't defined any error handling, so it'd be kind of ugly, but the server would continue running and it wouldn't just blow up everything. Unfortunately, express doesn't know how to handle errors in asynchronous functions, so we have to figure out some ways around that.
 
 ## try/catch
 
@@ -100,7 +100,7 @@ The `next` function here does the work of passing any errors along to the error 
 
 The above is better, but I don't love the idea of writing try/catch blocks over & over in my code... it feels repetitive and cluttered.
 
-To avoid that, we write a function that will wrap our asynchronous code. Basically we're just extracting this try/catch + next logic into a handy resusable function:
+To avoid that, we write a function that will wrap our asynchronous code. Basically we're just extracting this try/catch + next logic into a handy reusable function:
 
 ```typescript
 import express, { RequestHandler, Request, Response, NextFunction } from 'express'
