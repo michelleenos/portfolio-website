@@ -54,6 +54,39 @@ let val = Math.abs(easeInCubic(p * 2 - 1))
 {% endhighlight %}
 </div>
 
+<div class='code-example' id='quartAdjust'>
+	{% highlight 'js' %}
+function easeInQuart(x) {
+	return x * x * x * x
+}
+
+let p = animLoop.progress
+let val = Math.abs(easeInQuart(p * 2 - 1))
+{% endhighlight %}
+</div>
+
+<div class='code-example' id='quintAdjust'>
+	{% highlight 'js' %}
+function easeInQuint(x) {
+	return x * x * x * x * x
+}
+
+let p = animLoop.progress
+let val = Math.abs(easeInQuint(p * 2 - 1))
+{% endhighlight %}
+</div>
+
+<div class='code-example' id='circAdjust'>
+	{% highlight 'js' %}
+function easeInCirc(x) {
+	return 1 - Math.sqrt(1 - x * x)
+}
+
+let p = animLoop.progress
+let val = Math.abs(easeInCirc(p * 2 - 1))
+{% endhighlight %}
+</div>
+
 <div class='code-example' id='easeInQuadCyc'>
 	{% highlight 'js' %}
 function easeInQuad(x) {
@@ -95,6 +128,7 @@ let val = easeInCubicCyc(p)
 <div class='code-example' id='sinPAngle'>
 	{% highlight 'js' %}
 let p = animLoop.progress
+
 let val = Math.sin(p * Math.PI)
 {% endhighlight %}
 </div>
@@ -108,6 +142,7 @@ function inOutQuad(x) {
 function inOutQuadCyc(x) {
 	return x < 0.5 ? inOutQuad(x * 2) : 1 - inOutQuad((x - 0.5) * 2)
 }
+
 let p = animLoop.progress
 let val = inOutQuadCyc(p)
 
@@ -118,7 +153,6 @@ let val = inOutQuadCyc(p)
 	{% highlight 'js' %}
 let p = animLoop.progress
 let val = Math.abs(Math.cos(p * Math.PI))
-
 {% endhighlight %}
 </div>
 
@@ -134,6 +168,17 @@ let val = easeInOutSine(Math.sin(p * Math.PI))
 {% endhighlight %}
 </div>
 
+<div class='code-example' id='inOutQuartAngle'>
+	{% highlight 'js' %}
+function easeInOutQuart(x) {
+	return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2
+}
+
+let p = animLoop.progress
+let val = easeInOutQuart(Math.sin(p * Math.PI))
+
+{% endhighlight %}
+</div>
 <div class='code-example' id='inCubicAngle'>
 	{% highlight 'js' %}
 function easeInCubic(x) {
@@ -146,7 +191,19 @@ let val = easeInCubic(Math.sin(p * Math.PI))
 {% endhighlight %}
 </div>
 
-<div class='flex'>
+<div class='code-example' id='inCubicAngleCos'>
+	{% highlight 'js' %}
+function easeInCubic(x) {
+	return x * x * x
+}
+
+let p = animLoop.progress
+let val = easeInCubic(Math.cos(p * Math.PI))
+
+{% endhighlight %}
+</div>
+
+<div class='flex demo-container'>
 
 	<div id='ease-demo'></div>
 	<div id='code-demo'></div>
@@ -154,14 +211,6 @@ let val = easeInCubic(Math.sin(p * Math.PI))
 </div>
 
 <style type='text/css'>
-	@media (min-width: 630px) {
-		.flex {
-			display: flex;
-		}
-		.flex .frame-wrap {
-			margin-right: 1rem;
-		}
-	}
 	code[class*=language-],
 	pre,
 	pre[class*=language-] {
@@ -185,7 +234,6 @@ let val = easeInCubic(Math.sin(p * Math.PI))
 	}
 
 	#code-demo {
-		flex: 1 0 auto;
 		background-color: #e3fff9;
 		border: 1px solid #63c0bc;
 	}
@@ -195,10 +243,30 @@ let val = easeInCubic(Math.sin(p * Math.PI))
 		border: 1px solid #63c0bc;
 	}
 
-	.flex {
-		max-width: 800px;
+	.demo-container {
 		margin-top: 2rem;
 	}
+
+	@media (min-width: 630px) {
+		.demo-container {
+			display: flex;
+		}
+
+		#ease-demo {
+			width: 400px;
+		}
+
+		#code-demo {
+			width: calc(100% - 400px);
+		}
+		#code-demo .code-example, #code-demo pre {
+			height: 100%;
+		}
+		.demo-container .frame-wrap {
+			margin-right: 1rem;
+		}
+	}
+
 
 	table#ease-table {
 		font-family: var(--font_code);
@@ -212,7 +280,6 @@ let val = easeInCubic(Math.sin(p * Math.PI))
 
 	table#ease-table tr:nth-child(2n) {
 		background-color: hsla(165, 100%, 31%, 0.3);
-
 	}
 
 	table#ease-table tr:nth-child(2n-1) {

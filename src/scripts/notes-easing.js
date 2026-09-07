@@ -56,10 +56,10 @@ const ease = {
 		return x === 0
 			? 0
 			: x === 1
-			? 1
-			: x < 0.5
-			? Math.pow(2, 20 * x - 10) / 2
-			: (2 - Math.pow(2, -20 * x + 10)) / 2
+				? 1
+				: x < 0.5
+					? Math.pow(2, 20 * x - 10) / 2
+					: (2 - Math.pow(2, -20 * x + 10)) / 2
 	},
 
 	inOutCirc: function (x) {
@@ -151,11 +151,6 @@ const OPTS = [
 		fn: (p) => ease.inOutSine(Math.sin(p * Math.PI)),
 	},
 	{
-		title: 'inOutExpo(sin(p * PI))',
-		id: 'inOutExpoAngle',
-		fn: (p) => ease.inOutExpo(Math.sin(p * Math.PI)),
-	},
-	{
 		title: 'inOutQuart(sin(p * PI))',
 		id: 'inOutQuartAngle',
 		fn: (p) => ease.inOutQuart(Math.sin(p * Math.PI)),
@@ -167,7 +162,7 @@ const OPTS = [
 	},
 	{
 		title: 'easeInCubic(cos(p * PI))',
-		id: 'inCubicAngle',
+		id: 'inCubicAngleCos',
 		fn: (p) => ease.inCubic(Math.cos(p * Math.PI)),
 	},
 ]
@@ -208,7 +203,7 @@ class EaseDemos {
 			tr.appendChild(th)
 
 			tr.appendChild(
-				utils.el('td', { class: 'sr-only' }, 'click to see the animation with this easing')
+				utils.el('td', { class: 'sr-only' }, 'click to see the animation with this easing'),
 			)
 
 			for (let i = 0; i < opt.vals.length; i++) {
@@ -227,7 +222,7 @@ class EaseDemos {
 
 		this.current = this.options[i]
 		this.demo.innerHTML = ''
-		this.demo.appendChild(this.current.code)
+		if (this.current.code) this.demo.appendChild(this.current.code)
 		this.current.row.setAttribute('aria-current', 'true')
 	}
 
@@ -248,7 +243,7 @@ const codeDemo = document.getElementById('code-demo')
 let demos = new EaseDemos(table, codeDemo, OPTS)
 
 function setup() {
-	const canvas = createCanvas(500, 250)
+	const canvas = createCanvas(400, 250)
 	canvas.parent('#ease-demo')
 
 	createLoop({ duration: 2 })
@@ -263,10 +258,10 @@ function draw() {
 
 	let p = animLoop.progress
 	let val = demos.current.fn(p)
-	let pos = map(val, 0, 1, height * 0.2, height * 0.8)
+	let pos = map(val, 0, 1, height * 0.15, height * 0.7)
 	let r = map(val, 0, 1, height * 0.2, height * 0.5)
 
-	translate(250 + 250 / 2, pos)
+	translate(315, pos)
 	circle(0, 0, r)
 
 	pop()
@@ -288,7 +283,6 @@ function chart(progress, currentVal) {
 	textSize(9)
 	textAlign(RIGHT)
 
-	let vals = demos.current.vals
 	let valMax = step * 10
 	let p = 0
 	let i = 0
@@ -296,19 +290,12 @@ function chart(progress, currentVal) {
 	beginShape()
 	while ((i <= 10, p <= 1)) {
 		let pos = step * i
-		let val = utils.round(p, 2)
 
 		stroke(0)
 		noFill()
 		line(-3, pos, 2, pos)
 		line(pos, step * 10, pos, step * 10 + 3)
 
-		// fill(0)
-		// noStroke()
-		// text(utils.round(1 - val), -4, pos + 3)
-		// text(val, pos, step * 10 + 12)
-
-		// let easeVal = vals[p]
 		let easeVal = demos.current.fn(p)
 		let yPos = valMax - easeVal * (step * 10)
 		circle(pos, yPos, 2)
