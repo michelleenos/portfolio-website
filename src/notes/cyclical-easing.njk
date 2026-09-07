@@ -21,17 +21,19 @@ footerScripts:
 
 <p>Here's a collection of functions to use in cyclical animations. Click each row of the table to see a demo below.</p>
 
-<table id='ease-table' class='smaller horizontal'>
-	<tbody>
-		<tr>
-			<th scope="row">progress</th>
-			<td class='sr-only'></td>
-			{% for i in range(0, 1, 0.1) -%}
-				<th>{{ i | round }}</th>
-			{%- endfor %}
-		</tr>
-	</tbody>
-</table>
+<div class='ease-table-wrap'>
+	<table id='ease-table' class='smaller horizontal'>
+		<tbody>
+			<tr>
+				<th scope="row">progress</th>
+				<td class='sr-only'></td>
+				{% for i in range(0, 1, 0.1) -%}
+					<th>{{ i | round }}</th>
+				{%- endfor %}
+			</tr>
+		</tbody>
+	</table>
+</div>
 
 <div class='code-example' id='inOutSineX2'>
 	{% highlight 'js' %}
@@ -247,6 +249,12 @@ let val = easeInCubic(Math.cos(p * Math.PI))
 		margin-top: 2rem;
 	}
 
+	.ease-table-wrap {
+		max-width: 100%;
+		position: relative;
+		overflow-x: auto;
+	}
+
 	@media (min-width: 630px) {
 		.demo-container {
 			display: flex;
@@ -310,6 +318,10 @@ let val = easeInCubic(Math.cos(p * Math.PI))
 		border-bottom: 1px solid var(--color-teal-3);
 	}
 
+	table#ease-table tr[tabindex="0"] {
+		cursor: pointer;
+	}
+
 	table#ease-table tr[aria-current="true"] td,
 	table#ease-table tr[aria-current="true"] th[scope="row"] {
 		background-color: hsla(174, 100%, 50%, 0.4);
@@ -319,12 +331,10 @@ let val = easeInCubic(Math.cos(p * Math.PI))
 	table#ease-table tr[tabindex="0"]:focus td,
 	table#ease-table tr[tabindex="0"]:focus th,
 	table#ease-table tr[tabindex="0"]:hover th {
-		cursor: pointer;
 		background-color: hsla(174, 100%, 50%, 0.6);
 	}
 
-	table#ease-table tr[tabindex="0"] td,
-	table#ease-table tr[tabindex="0"] th {
-		transition: background-color 300ms;
+	table#ease-table td,
+	table#ease-table th {
 	}
 </style>

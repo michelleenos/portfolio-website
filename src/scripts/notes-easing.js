@@ -234,6 +234,14 @@ class EaseDemos {
 
 			this.setCurrent(index)
 		})
+
+		this.table.addEventListener('keydown', (e) => {
+			if (e.key !== 'Enter') return
+			let tr = e.target.closest('tr')
+			if (!tr || !tr.classList.contains('ease-row')) return
+			let index = tr.dataset['i']
+			this.setCurrent(index)
+		})
 	}
 }
 
