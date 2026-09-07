@@ -15,5 +15,7 @@ let passthroughCopy = [
 	'./src/sketchesthree/scripts',
 ]
 
-exports.watchTargets = watchTargets
-exports.passthroughCopy = passthroughCopy
+export { watchTargets, passthroughCopy }
+
+// exports.watchTargets = watchTargets
+// exports.passthroughCopy = passthroughCopy

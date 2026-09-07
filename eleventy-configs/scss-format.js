@@ -1,7 +1,7 @@
-const sass = require('sass')
-const path = require('path')
+import * as sass from 'sass'
+import path from 'path'
 
-function customFormatScss(eleventyConfig) {
+export function customFormatScss(eleventyConfig) {
 	eleventyConfig.addTemplateFormats('scss')
 	eleventyConfig.addExtension('scss', {
 		outputFileExtension: 'css',
@@ -25,4 +25,4 @@ function customFormatScss(eleventyConfig) {
 	})
 }
 
-module.exports = customFormatScss
+// module.exports = customFormatScss

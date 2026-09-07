@@ -1,12 +1,19 @@
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
-const { imageShortcode } = require('./eleventy-configs/image-shortcode')
-const collections = require('./eleventy-configs/collections')
-const filters = require('./eleventy-configs/filters')
-const customFormatScss = require('./eleventy-configs/scss-format')
-const { watchTargets, passthroughCopy } = require('./eleventy-configs/watch-passthrough-info')
-const markdownSetup = require('./eleventy-configs/markdown')
+// const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
+import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import { imageShortcode } from './eleventy-configs/image-shortcode.js'
+import { collections } from './eleventy-configs/collections.js'
+import { filters } from './eleventy-configs/filters.js'
+import { customFormatScss } from './eleventy-configs/scss-format.js'
+import { watchTargets, passthroughCopy } from './eleventy-configs/watch-passthrough-info.js'
+import { markdownSetup } from './eleventy-configs/markdown.js'
+// const { imageShortcode } = require('./eleventy-configs/image-shortcode')
+// const collections = require('./eleventy-configs/collections')
+// const filters = require('./eleventy-configs/filters')
+// const customFormatScss = require('./eleventy-configs/scss-format')
+// const { watchTargets, passthroughCopy } = require('./eleventy-configs/watch-passthrough-info')
+// const markdownSetup = require('./eleventy-configs/markdown')
 
-module.exports = function (eleventyConfig) {
+export default async function (eleventyConfig) {
 	customFormatScss(eleventyConfig)
 	markdownSetup(eleventyConfig)
 

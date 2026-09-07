@@ -1,4 +1,4 @@
-let collections = [
+export const collections = [
 	{
 		name: 'tagList',
 		fn: function (collections) {
@@ -34,4 +34,4 @@ let collections = [
 	},
 ]
 
-module.exports = collections
+// module.exports = collections

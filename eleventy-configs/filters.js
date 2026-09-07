@@ -1,6 +1,7 @@
-const util = require('util')
+// const util = require('util')
+import util from 'util'
 
-let filters = [
+export const filters = [
 	{
 		name: 'filterTags',
 		fn: function (tags) {
@@ -57,4 +58,4 @@ let filters = [
 	},
 ]
 
-module.exports = filters
+// module.exports = filters

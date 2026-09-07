@@ -1,6 +1,7 @@
-const Image = require('@11ty/eleventy-img')
+// const Image = require('@11ty/eleventy-img')
+import Image from '@11ty/eleventy-img'
 
-async function imageShortcode({
+export async function imageShortcode({
 	src,
 	alt,
 	widths = [550, 1000],
@@ -46,4 +47,4 @@ async function imageShortcode({
 	  </picture>`
 }
 
-exports.imageShortcode = imageShortcode
+// exports.imageShortcode = imageShortcode
